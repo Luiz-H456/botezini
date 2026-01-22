@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B0B0B" />
+    <meta name="description" content="Sistema de gestão industrial para confecções.">
+    
+    <title>BOTEZINI ERP</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3252/3252754.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                500: '#C9A24D',
+                600: '#B08D3C',
+              },
+              zinc: {
+                850: '#1f1f22', // Card bg
+                900: '#141414', // Secondary bg
+                950: '#0B0B0B', // Main bg
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script>
+      // Polyfill for process.env in browser environments to prevent crashes
+      window.process = window.process || { env: {} };
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Custom Scrollbar for Industrial Feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #141414; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C9A24D; 
+      }
+      @media print {
+        .no-print { display: none !important; }
+        .print-only { display: block !important; }
+        body { background-color: white !important; color: black !important; }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "prop-types": "https://esm.sh/prop-types@15.8.1",
+    "recharts": "https://esm.sh/recharts@2.12.3?external=react,react-dom,prop-types",
+    "lucide-react": "https://esm.sh/lucide-react@0.358.0?external=react",
+    "zod": "https://esm.sh/zod@3.22.4",
+    "jspdf": "https://esm.sh/jspdf@2.5.1",
+    "jspdf-autotable": "https://esm.sh/jspdf-autotable@3.8.2",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.8",
+    "@google/genai": "https://esm.sh/@google/genai@0.1.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-zinc-950 text-slate-200 antialiased selection:bg-gold-500 selection:text-black">
+    <div id="root"></div>
+    
+    <!-- Service Worker Registration for PWA (Handled Gracefully) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Check if we are in a secure context or localhost before registering
+          if (window.location.protocol === 'https:' || window.location.hostname === 'localhost') {
+            navigator.serviceWorker.register('./service-worker.js')
+              .then((registration) => {
+                console.log('SW Registered');
+              })
+              .catch((err) => {
+                console.warn('SW Registration Skipped:', err.message);
+              });
+          }
+        });
+      }
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

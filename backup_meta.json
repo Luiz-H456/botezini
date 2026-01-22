@@ -1,0 +1,12 @@
+{
+  "version": "1.9",
+  "status": "stable",
+  "description": "Backup point before experimental changes.",
+  "timestamp": "Current",
+  "features": [
+    "Production Kanban Fixed (Degrau + Texto)",
+    "Supabase Connection Active",
+    "Finance Module Active",
+    "Budgets & Orders Active"
+  ]
+}
